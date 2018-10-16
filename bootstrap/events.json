@@ -1,0 +1,33 @@
+{
+    "entries": [
+        {
+            "name": "Get Together and Tango",
+            "building": "LIT",
+            "room": 101,
+            "time": "2018-12-12T12:00:00",
+            "host": "Argentine Tango Club",
+            "dietary prefs": "N/A",
+            "created_at": "2018-10-16T00:00:00",
+            "updated_at": "2018-10-16T00:00:00"
+        }, 
+        {
+            "name": "Chicken Party",
+            "address": "1340 W University Ave suite 10, Gainesville, FL 32603",
+            "time": "2018-11-1T14:00:00",
+            "host": "Biomedical Engineering Society",
+            "dietary prefs": "Meat",
+            "created_at": "2018-10-15T00:00:00",
+            "updated_at": "2018-10-15T00:00:00"
+        }, 
+        {
+            "name": "Information Session",
+            "building": "CAR",
+            "room": 100,
+            "time": "2018-10-30T18:00:00",
+            "host": "American Society of Mechanical Engineers",
+            "dietary prefs": "N/A",
+            "created_at": "2018-10-14T00:00:00",
+            "updated_at": "2018-10-14T00:00:00"
+        }, 
+    ]
+}
