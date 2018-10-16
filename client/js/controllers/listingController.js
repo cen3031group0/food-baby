@@ -14,9 +14,15 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.addListing = function() {
       $scope.listing = {
-        "code": $scope.newListing.code,
         "name": $scope.newListing.name,
-        "address": $scope.newListing.address
+        "address": $scope.newListing.address,
+        "building": $scope.newListing.building,
+        "room": $scope.newListing.room,
+        "time": $scope.newListing.time,
+        "host": $scope.newListing.host,
+        "dietary_prefs": $scope.newListin.dietary_prefs,
+        "created_at": $scope.newListing.created_at,
+        "updated_at": $scope.newListing.updated_at
       }
       var res = Listings.create($scope.listing);
       $scope.updateListings();
