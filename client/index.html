@@ -9,7 +9,7 @@
       <div class="row">
         <h1><center>FooDaddy</center></h1>
       </div>
-      <div class="row" ng-controller="ListingsController">
+      <div class="row" ng-controller="EventsController">
         <div class="col-md-6">
           <div class="input-group" id="searchBar">
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
@@ -22,23 +22,23 @@
                 <th>Time</th>
                 <th></th>
               </tr>
-              <tr ng-repeat="listing in listings | filter: query" ng-click="showDetails(listing._id)">
-                <td>{{listing.name}}</td>
-                <td>{{listing.time}}</td>
-                <td ng-click="deleteListing(listing._id)"><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
+              <tr ng-repeat="event in events | filter: query" ng-click="showDetails(event._id)">
+                <td>{{event.name}}</td>
+                <td>{{event.time}}</td>
+                <td ng-click="deleteEvent(event._id)"><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
               </tr>
             </table>
           </div>
           <form novalidate class="simple-form">
             <h2>Add New Event</h2>
-            Name: <input type="text" ng-model="newListing.name" /><br />
-            Address: <input type="text" ng-model="newListing.address" /><br />
-            Building: <input type="text" ng-model="newListing.building" /><br />
-            Room: <input type="text" ng-model="newListing.room" /><br />
-            Time: <input type="text" ng-model="newListing.time" /><br />
-            Host: <input type="text" ng-model="newListing.host" /><br />
-            Dietary Preferences: <input type="text" ng-model="newListing.dietary_prefs" /><br />
-            <button class="btn btn-primary" ng-click="addListing()">Add Listing</button>
+            Name: <input type="text" ng-model="newEvent.name" /><br />
+            Address: <input type="text" ng-model="newEvent.address" /><br />
+            Building: <input type="text" ng-model="newEvent.building" /><br />
+            Room: <input type="text" ng-model="newEvent.room" /><br />
+            Time: <input type="text" ng-model="newEvent.time" /><br />
+            Host: <input type="text" ng-model="newEvent.host" /><br />
+            Dietary Preferences: <input type="text" ng-model="newEvent.dietary_prefs" /><br />
+            <button class="btn btn-primary" ng-click="addEvent()">Add Event</button>
           </form>
         </div>
         <div class="col-md-6">
@@ -48,9 +48,8 @@
             <p>Address: {{detailedInfo.address}}</p>
             <p>Building: {{detailedInfo.building}}</p>
             <p>Room: {{detailedInfo.room}}</p>
-            <p>Time: {{detailedInfo.time}}</p>
             <p>Host: {{detailedInfo.host}}</p>
-            <p>Dietary Preferences: {{detailedInfo.dietary_prefs}}</p>
+            <p>Dietary Preferences: {{detailedInfo.diet}}</p>
           </div>
         </div>
       </div>
@@ -59,7 +58,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/factories/listingFactory.js"></script>
-    <script src="js/controllers/listingController.js"></script>
+    <script src="js/factories/eventFactory.js"></script>
+    <script src="js/controllers/eventController.js"></script>
   </body>
 </html>
