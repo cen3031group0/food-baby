@@ -18,13 +18,13 @@
           <div class="tableWrapper">
             <table class="table table-striped table-hover">
               <tr>
-                <th>Name</th>
-                <th>Time</th>
+                <th>Event</th>
+                <th>Host</th>
                 <th></th>
               </tr>
               <tr ng-repeat="event in events | filter: query" ng-click="showDetails(event._id)">
                 <td>{{event.name}}</td>
-                <td>{{event.time}}</td>
+                <td>{{event.host}}</td>
                 <td ng-click="deleteEvent(event._id)"><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
               </tr>
             </table>
