@@ -12,7 +12,7 @@ angular.module('events').controller('ListingsController', ['$scope', 'Listings',
 
     $scope.detailedInfo = undefined;
 
-    $scope.addListing = function() {
+    $scope.addEvent = function() {
       $scope.event = {
         "name": $scope.newEvent.name,
         "address": $scope.newEvent.address,
