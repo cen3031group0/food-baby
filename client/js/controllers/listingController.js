@@ -1,42 +1,42 @@
-angular.module('listings').controller('ListingsController', ['$scope', 'Listings', 
-  function($scope, Listings) {
+angular.module('events').controller('ListingsController', ['$scope', 'Listings', 
+  function($scope, Events) {
     /* Get all the listings, then bind it to the scope */
-    $scope.updateListings = function() {
-      Listings.getAll().then(function(response) {
-        $scope.listings = response.data;
+    $scope.updateEvents = function() {
+      Events.getAll().then(function(response) {
+        $scope.events = response.data;
       }, function(error) {
-        console.log('Unable to retrieve listings:', error);
+        console.log('Unable to retrieve events:', error);
       });
     };
-    $scope.updateListings();
+    $scope.updateEvents();
 
     $scope.detailedInfo = undefined;
 
     $scope.addListing = function() {
-      $scope.listing = {
-        "name": $scope.newListing.name,
-        "address": $scope.newListing.address,
-        "building": $scope.newListing.building,
-        "room": $scope.newListing.room,
-        "time": $scope.newListing.time,
-        "host": $scope.newListing.host,
-        "dietary_prefs": $scope.newListin.dietary_prefs,
-        "created_at": $scope.newListing.created_at,
-        "updated_at": $scope.newListing.updated_at
+      $scope.event = {
+        "name": $scope.newEvent.name,
+        "address": $scope.newEvent.address,
+        "building": $scope.newEvent.building,
+        "room": $scope.newEvent.room,
+        "time": $scope.newEvent.time,
+        "host": $scope.newEvent.host,
+        "dietary_prefs": $scope.newEvent.dietary_prefs,
+        "created_at": $scope.newEvent.created_at,
+        "updated_at": $scope.newEvent.updated_at
       }
-      var res = Listings.create($scope.listing);
-      $scope.updateListings();
+      var res = Events.create($scope.event);
+      $scope.updateEvents();
     };
 
-    $scope.deleteListing = function(id) {
-      Listings.delete(id);
-      $scope.updateListings();
+    $scope.deleteEvent = function(id) {
+      Events.delete(id);
+      $scope.updateEvents();
     };
 
     $scope.showDetails = function(id) {
-      $scope.listings.forEach(function(listing) {
-        if (listing._id == id) {
-          $scope.detailedInfo = listing;
+      $scope.events.forEach(function(event) {
+        if (event._id == id) {
+          $scope.detailedInfo = event;
         }
       });
     };
