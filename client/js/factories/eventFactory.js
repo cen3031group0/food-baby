@@ -4,7 +4,7 @@ angular.module('events', []).factory('Events', function($http) {
       return $http.get(window.location.origin + '/api/events');
     },
 	
-	  create: function(listing) {
+	  create: function(event) {
 	    return $http.post(window.location.origin + '/api/events', event);
     }, 
 
