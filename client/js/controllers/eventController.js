@@ -1,6 +1,5 @@
 angular.module('events').controller('EventsController', ['$scope', 'Events', 
   function($scope, Events) {
-    /* Get all the listings, then bind it to the scope */
     $scope.updateEvents = function() {
       Events.getAll().then(function(response) {
         $scope.events = response.data;
