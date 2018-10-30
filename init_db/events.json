@@ -2,6 +2,7 @@
     "entries": [
         {
             "name": "Get Together and Tango",
+            "created_by": "alaingarcia",
             "building": "LIT",
             "room": 101,
             "time": "2018/12/12 12:00:00",
@@ -11,6 +12,7 @@
         }, 
         {
             "name": "Chicken Party",
+            "created_by": "alaingarcia",
             "address": "1340 W University Ave suite 10, Gainesville, FL 32603",
             "time": "2018/11/1 14:00:00",
             "host": "Biomedical Engineering Society",
@@ -19,6 +21,7 @@
         }, 
         {
             "name": "Information Session",
+            "created_by": "alaingarcia",
             "building": "CAR",
             "room": 100,
             "time": "2018/10/30 18:00:00",
