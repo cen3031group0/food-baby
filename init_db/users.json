@@ -1,0 +1,16 @@
+{
+    "entries": [
+        {
+            "name": "admin",
+            "pass": "admin"
+        }, 
+        {
+            "name": "test_user",
+            "pass": "123456"
+        },
+        {
+            "name": "alaingarcia",
+            "pass": "password"
+        }
+    ]
+}

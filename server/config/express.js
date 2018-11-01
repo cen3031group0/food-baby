@@ -4,7 +4,8 @@ var path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
-    eventsRouter = require('../routes/events.server.routes');
+    eventsRouter = require('../routes/events.server.routes'),
+    usersRouter = require('../routes/users.server.routes');
 
 module.exports.init = function() {
   //connect to database
@@ -23,10 +24,9 @@ module.exports.init = function() {
   // Serve static files
   app.use('/', express.static('client'))
   
-
-  // Use the events router for requests to the api
+  // API routing
   app.use('/api/events', eventsRouter);
-
+  app.use('/api/users', usersRouter);
 
   // Go to homepage for all routes not specified
   app.use('*', express.static('client'))

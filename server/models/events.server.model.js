@@ -8,6 +8,9 @@ var eventSchema = new Schema({
     type: String,
     required: true
   },
+  created_by: {
+    type: String,
+  },
   address: String,
   building: String,
   room: String,
