@@ -12,7 +12,6 @@ angular.module('events').controller('EventsController', ['$scope', 'Events',
     $scope.detailedInfo = undefined;
 
     $scope.addEvent = function() {
-      console.log('hello from event');
       $scope.event = {
         "name": $scope.newEvent.name,
         "address": $scope.newEvent.address,

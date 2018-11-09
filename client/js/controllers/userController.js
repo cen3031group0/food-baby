@@ -10,7 +10,6 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
     $scope.updateUsers();
 
     $scope.addUser = function() {
-      console.log("hello");
       $scope.user = {
         "name": $scope.newUser.name,
         "pass": $scope.newUser.pass
