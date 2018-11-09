@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      var geocoder;
+      var infoWindow;
+      var events;
+      
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 29.6463, lng: 82.3478},
+          zoom: 15
+        });
+
+        //trying out pins
+        geocoder = new google.maps.Geocoder();
+        generatePin(geocoder, map, "marston science library");
+        generatePin(geocoder, map, "university of florida new engineering building");
+        
+        $.getJSON('http://localhost:8080/api/events', function(events) {
+		    cnosole.log(events);
+		    //for (var i in events.entries ){
+		    	//var entry = events.entries[i];
+		    	//generatePin(geocoder, map, entry.address);
+		    //}
+		});
+
+        //map.panTo({lat: 29.6463, lng: 82.3478});
+      }
+      function generatePin(geocoder, map, address) {
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+
+            var infoWindow = new google.maps.InfoWindow;
+            marker.addListener('click', function() {
+	        	infoWindow.setPosition(marker.getPosition());
+	        	infoWindow.setContent("event details here");
+	        	infoWindow.open(map, marker);
+	        	//map.setCenter(marker.getPosition());
+	        });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVAOsJGxJX6QlWoLL6XyVMx0k8B4JPCq4&callback=initMap"
+    async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/eventFactory.js"></script>
+    <script src="js/controllers/eventController.js"></script>
+  </body>
+</html>
