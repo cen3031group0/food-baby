@@ -10,6 +10,7 @@ var eventSchema = new Schema({
   },
   created_by: {
     type: String,
+    required: true
   },
   address: String,
   building: String,
