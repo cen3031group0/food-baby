@@ -5,9 +5,9 @@ campus. Food Baby will give users the ability to publish their events with free 
 
 ## Quickstart
 
-Initialize database
+Initialize databases
 
-	$ (cd init && node initDB.js)
+	$ (cd init_db && node init_events_db.js && node init_users_db.js)
 
 Start server
 
@@ -15,8 +15,18 @@ Start server
 
 ## API
 
+### Events
+
 - Retrieve all events: `GET(/api/events)`
 - Retrieve a single event: `GET(/api/events/<event._id>)`
 - Save an event: `POST(/api/events)`
 - Update an event: `PUT(/api/events/<event._id>)`
 - Delete an event: `DELETE(/api/events/<event._id>)`
+
+### Users
+
+- Retrieve all users: `GET(/api/users)`
+- Retrieve a single user: `GET(/api/users/<user._id>)`
+- Save a user: `POST(/api/users)`
+- Update a user: `PUT(/api/users/<user._id>)`
+- Delete a user: `DELETE(/api/users/<user._id>)`
