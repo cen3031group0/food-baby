@@ -3,6 +3,7 @@
         {
             "name": "Get Together and Tango",
             "created_by": "alaingarcia",
+            "address": "1400 Stadium Rd, Gainesville, FL 32611",
             "building": "LIT",
             "room": 101,
             "time": "2018/12/12 12:00:00",
@@ -22,6 +23,7 @@
         {
             "name": "Information Session",
             "created_by": "alaingarcia",
+            "address": "1475 Union Rd, Gainesville, FL 32611",
             "building": "CAR",
             "room": 100,
             "time": "2018/10/30 18:00:00",
