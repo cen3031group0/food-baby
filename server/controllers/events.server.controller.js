@@ -19,11 +19,10 @@ exports.read = function(req, res) {
 
 exports.update = function(req, res) {
   var db_event = req.db_event;
-  Event.findOneAndUpdate(
-    {'code': db_event.code},
-    {$set: req.body},
-    {new: true},
-    function (err, db_event) {
+  Event.findOneAndUpdate({'code': db_event.code},
+                           {$set: req.body},
+                           {new: true},
+                           function (err, db_event) {
     if(err) {
       console.log(err);
       res.status(400).send(err);
