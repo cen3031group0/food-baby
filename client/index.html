@@ -21,16 +21,16 @@
               <input type="text" class="form-control" placeholder="Search" ng-model="query">
             </div>
             <div class="tableWrapper">
-              <table class="table table-striped table-hover">
+              <table class="table table-striped table-hover" id="eventTable">
                 <tr>
                   <th>Event</th>
                   <th>Host</th>
-                  <th></th>
+                  <th>Address</th>
                 </tr>
-                <tr ng-repeat="event in events | filter: query" ng-click="showDetails(event._id)">
+                <tr ng-repeat="event in events | filter: query | orderBy: ['name', 'address'] " ng-click="showDetails(event._id)">
                   <td>{{event.name}}</td>
                   <td>{{event.host}}</td>
-                  <td ng-click="deleteEvent(event._id)"><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
+                  <td>{{event.address}}</td>
                 </tr>
               </table>
             </div>
@@ -47,16 +47,17 @@
             </form>
           </div>
           <div class="col-md-6">
-          	<iframe src="../google_map.html" height="400" width=100% frameborder="0">
+          	<iframe src="google_map.html" height="400" width=100% frameborder="0">
           	</iframe>
           </div>
         </div>
-
-        <div class="row">
-        	<div class="col-md-12">
-        		<div class="jumbotron">
-              <h2><center>Detailed Information</center></h2>
-              <h4><center>{{detailedInfo.name}}</center></h4>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <span style="color:white;" class="close">&times;</span>
+              <h2 style="color:white;" ><center>{{detailedInfo.name}}</center></h2>
+            </div>
+            <div class="modal-body">
               <p>Address: {{detailedInfo.address}}</p>
               <p>Building: {{detailedInfo.building}}</p>
               <p>Room: {{detailedInfo.room}}</p>
@@ -67,5 +68,24 @@
         </div>
       </div>
     </div>
+
+    <script>
+      var modal = document.getElementById('myModal');
+      var span = document.getElementsByClassName("close")[0];
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+      $("#eventTable").click(function(){
+        if(event.target.tagName == "TD")
+          if($(event.target).attr('class') != "span")
+            modal.style.display="block";
+      });
+
+    </script>
   </body>
 </html>

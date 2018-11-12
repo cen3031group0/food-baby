@@ -30,19 +30,19 @@
         });
 
         geocoder = new google.maps.Geocoder();
-        
-        $.getJSON(window.location.origin + '/api/events', function(events) {
-		    console.log(events);
-		    for (var i in events){
-		    	var entry = events[i];
-          console.log(entry);
-		    	generatePin(geocoder, map, entry.address);
-		    }
-		});
-
+        $.getJSON(window.location.origin + "/api/events", function(events) {
+  		    for (var i in events ){
+  		    	generatePin(geocoder, map, events[i]);
+  		    }
+		    });
+        $(document).ready(function(){map.moveToLocation(29.6463, -82.3478);});
       }
-      function generatePin(geocoder, map, address) {
-        geocoder.geocode({'address': address}, function(results, status) {
+      function moveToLocation(lat, lng){
+          var center = new google.maps.LatLng(lat, lng);
+          map.panTo(center);
+      }
+      function generatePin(geocoder, map, event) {
+        geocoder.geocode({'address': event.address}, function(results, status) {
           if (status === 'OK') {
             map.setCenter(results[0].geometry.location);
             var marker = new google.maps.Marker({
@@ -53,7 +53,7 @@
             var infoWindow = new google.maps.InfoWindow;
             marker.addListener('click', function() {
 	        	infoWindow.setPosition(marker.getPosition());
-	        	infoWindow.setContent("event details here");
+	        	infoWindow.setContent(event.name + "<br>" + event.address);
 	        	infoWindow.open(map, marker);
 	        });
           } else {
