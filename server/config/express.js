@@ -20,10 +20,20 @@ module.exports.init = function() {
   //body parsing middleware 
   app.use(bodyParser.json());
 
-  
+  // middleware to redirect trailing slashes
+  app.use((req, res, next) => {
+    const test = /\?[^]*\//.test(req.url);
+    if (req.url.substr(-1) === '/' && req.url.length > 1 && !test)
+      res.redirect(301, req.url.slice(0, -1));
+    else
+      next();
+  });
+
   // Serve static files
-  app.use('/', express.static('client'))
-  
+  app.use('/', express.static('client', {
+      extensions: ['html', 'htm']}
+  ))
+
   // API routing
   app.use('/api/events', eventsRouter);
   app.use('/api/users', usersRouter);
