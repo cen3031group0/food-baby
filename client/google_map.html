@@ -35,11 +35,6 @@
   		    	generatePin(geocoder, map, events[i]);
   		    }
 		    });
-        $(document).ready(function(){map.moveToLocation(29.6463, -82.3478);});
-      }
-      function moveToLocation(lat, lng){
-          var center = new google.maps.LatLng(lat, lng);
-          map.panTo(center);
       }
       function generatePin(geocoder, map, event) {
         geocoder.geocode({'address': event.address}, function(results, status) {

@@ -1,0 +1,54 @@
+doctype html
+html
+  head.
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/eventFactory.js"></script>
+    <script src="js/controllers/eventController.js"></script>
+  body
+    div#nav
+      include nav_bar.jade
+    div.container.
+      <div class="row" ng-app="appEvents">
+        <div>
+          <h2 class="center">Add Event</h2>
+          <div ng-controller="EventsController">
+            <form action="/">
+              <div class="form-group input-group">
+                <b>Event Name:</b>
+                <input class="form-control" type="text" ng-model="newEvent.name" />
+              </div>
+              <div class="form-group input-group">
+                <b>Address:</b>
+                <input class="form-control" type="text" ng-model="newEvent.address" />
+              </div>
+              <div class="form-group input-group">
+                <b>Building:</b>
+                <input class="form-control" type="text" ng-model="newEvent.building" />
+              </div>
+              <div class="form-group input-group">
+                <b>Room:</b>
+                <input class="form-control" type="text" ng-model="newEvent.room" />
+              </div>
+              <div class="form-group input-group">
+                <b>Time:</b>
+                <input class="form-control" type="text" ng-model="newEvent.time" />
+              </div>
+              <div class="form-group input-group">
+                <b>Host:</b>
+                <input class="form-control" type="text" ng-model="newEvent.host" />
+              </div>
+              <div class="form-group input-group">
+                <b>Dietary Preferences:</b>
+                <input class="form-control" type="text" ng-model="newEvent.dietary_prefs" />
+              </div>
+                <button class="btn btn-primary" ng-click="addEvent('#{name}')">Add Event</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
