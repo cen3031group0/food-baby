@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
+doctype html
+html
+  head.
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
@@ -9,23 +9,23 @@
     <script src="js/factories/userFactory.js"></script>
     <script src="js/controllers/userController.js"></script>
     <script src="js/jquery_load.js"></script>
-  </head>
-  <body>
-    <div id="nav"></div>
-    <div class="container">
-      <div class="row">
+  body
+    div#nav
+      include nav_bar.jade
+    div.container.
+      <div class="row" ng-app="appUsers">
         <div class="abs-center responsive jumbotron">
-          <h2 class="center">Login</h2>
+          <h2 class="center">Register</h2>
           <br>
-          <div class="col-sm-12 col-md-10 col-md-offset-1">
+          <div class="col-sm-12 col-md-10 col-md-offset-1" ng-controller="UsersController">
             <form action="/">
               <div class="form-group input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input class="form-control" type="text" name='username' placeholder="username"/>          
+                <input class="form-control" type="text" name='username' ng-model="newUser.name" placeholder="username"/>          
               </div>
               <div class="form-group input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input class="form-control" type="password" name='password' placeholder="password"/>     
+                <input class="form-control" type="password" name='password' ng-model="newUser.pass" placeholder="password"/>     
               </div>
               <div class="checkbox">
                 <label>
@@ -33,15 +33,9 @@
                 </label>
               </div>
               <div class="form-group">
-                <button type="button" class="btn btn-primary btn-block">Login</button>
-              </div>
-              <div class="form-group text-center">
-                <a href="/api/users">Forgot Password</a>&nbsp;|&nbsp;<a href="https://github.com/foodaddy/food-baby">Support</a>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="addUser()">Let's make some food babies!</button>
               </div>
             </form>        
           </div>  
         </div>    
       </div>
-    </div>
-  </body>
-</html>

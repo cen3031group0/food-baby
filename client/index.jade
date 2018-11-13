@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
+doctype html
+html
+  head.
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
@@ -9,10 +9,10 @@
     <script src="js/factories/eventFactory.js"></script>
     <script src="js/controllers/eventController.js"></script>
     <script src="js/jquery_load.js"></script>
-  </head>
-  <body>
-    <div id="nav"></div>
-    <div ng-app="appEvents">
+  body
+    div#nav
+      include nav_bar.jade
+    div(ng-app="appEvents").
       <div class="container" ng-controller="EventsController">
         <div class="row">
           <div class="col-md-6">
@@ -58,5 +58,3 @@
       </div>
     </div>
     <script src="js/modal.js"></script>
-  </body>
-</html>

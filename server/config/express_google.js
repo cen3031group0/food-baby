@@ -4,7 +4,7 @@ var path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
+    GoogleStrategy = require('passport-google-oauth20'),
     cookieSession = require('cookie-session'),
     config = require('./config'),
     User = require('../models/users.server.model.js')
@@ -19,12 +19,13 @@ module.exports.init = function() {
   var app = express();
 
   app.set('views', __dirname + '/../../client');
+  app.engine('html', require('ejs').renderFile);
 
   //enable request logging for development debugging
   app.use(morgan('dev'));
 
   //body parsing middleware 
-  app.use(bodyParser());
+  app.use(bodyParser.json());
 
   // middleware to redirect trailing slashes
   app.use((req, res, next) => {
@@ -37,27 +38,24 @@ module.exports.init = function() {
 
   // cookieSession config
   app.use(cookieSession({
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
+      maxAge: 24 * 60 * 60 * 1000, // One day in milliseconds
       keys: ['randomstringhere']
   }));
 
-  app.use(passport.initialize()); // initialize passport
-  app.use(passport.session()); // persist login sessions
+  app.use(passport.initialize()); // Used to initialize passport
+  app.use(passport.session()); // Used to persist login sessions
 
   // Strategy config
-  passport.use(new LocalStrategy(
-    function(username, password, done) {
-      User.findOne({ name: username }, function(err, user) {
-        if (err) { return done(err); }
-        if (!user) {
-          return done(null, false, { message: 'Incorrect username.' });
-        }
-        if (user.pass != password) {
-          return done(null, false, { message: 'Incorrect password.' });
-        }
-        return done(null, user);
-      });
-    }
+  passport.use(new GoogleStrategy({
+          clientID: '238871557533-nklm86gqctbr046l5gsqhp86atlpmuga.apps.googleusercontent.com',
+          clientSecret: 'chsJXf9T_wFLSeEoN-17jeDu',
+          callbackURL: 'http://localhost:8080/auth/google/callback'
+      },
+      (accessToken, refreshToken, profile, done) => {
+          User.create({ name: profile.id }, function (err, user) {
+              return done(err, user);
+          });
+      }
   ));
 
   // Used to stuff a piece of information into a cookie
@@ -79,44 +77,26 @@ module.exports.init = function() {
       }
   }
 
-  app.post('/login',
-    passport.authenticate('local', { successRedirect: '/',
-                                     failureRedirect: '/login'})
-  );
+  // passport.authenticate middleware is used here to authenticate the request
+  app.get('/auth/google', passport.authenticate('google', {
+      scope: ['profile'] // require profile info from Google account
+  }));
 
-  // add event - only for authenticated users
+  // The middleware receives the data from Google and runs the function on Strategy config
+  app.get('/auth/google/callback', passport.authenticate('google'), (req, res) => {
+      res.redirect('/add_event');
+  });
+
+  // Secret route
   app.get('/add_event', isUserAuthenticated, (req, res) => {
-      res.render('add_event.jade', {username: req.user.username});
+      // res.render('add_event.html');
+      res.render('add_event.html', {username: req.user.username});
   });
 
-  // logout route
+  // Logout route
   app.get('/logout', (req, res) => {
-      req.logout();
+      req.logout(); 
       res.redirect('/');
-  });
-
-  app.get('/', function (req, res) {
-    if (req.user) {
-      res.render('index.jade', { name: req.user.name })
-    } else {
-      res.render('index.jade')
-    }
-  });
-
-  app.get('/register', function (req, res) {
-    if (req.user) {
-      res.redirect('/');
-    } else {
-      res.render('register.jade')
-    }
-  });
-
-  app.get('/login', function (req, res) {
-    if (req.user) {
-      res.redirect('/');
-    } else {
-      res.render('login.jade')
-    }
   });
 
   // Serve static files
