@@ -14,7 +14,13 @@ html
     div(ng-app="appEvents").
       <div class="container" ng-controller="EventsController">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
+            <iframe src="google_map.html" height="400" width=100% frameborder="0">
+            </iframe>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <div class="input-group" id="searchBar">
               <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
               <input type="text" class="form-control" placeholder="Search" ng-model="query">
@@ -33,10 +39,6 @@ html
                 </tr>
               </table>
             </div>
-          </div>
-          <div class="col-md-6">
-          	<iframe src="google_map.html" height="400" width=100% frameborder="0">
-          	</iframe>
           </div>
         </div>
         <div id="myModal" class="modal">
