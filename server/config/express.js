@@ -128,5 +128,9 @@ module.exports.init = function() {
   app.use('/api/events', eventsRouter);
   app.use('/api/users', usersRouter);
 
+  app.use('*', function(req, res) {
+    res.render('404.jade')
+  })
+
   return app;
 };  
