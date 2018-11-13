@@ -5,6 +5,7 @@ nav.navbar.navbar-inverse
     ul.nav.navbar-nav.navbar-right
       if name
         p.navbar-text Hello, #{name}!
+        li #[a(href="/add_event") #[span.glyphicon.glyphicon-plus] Add Event]
         li #[a(href="/logout") #[span.glyphicon.glyphicon-log-out] Logout]
       else
         li #[a(href="/register") #[span.glyphicon.glyphicon-user] Register]

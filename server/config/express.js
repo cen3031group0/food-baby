@@ -86,7 +86,7 @@ module.exports.init = function() {
 
   // add event - only for authenticated users
   app.get('/add_event', isUserAuthenticated, (req, res) => {
-      res.render('add_event.jade', {username: req.user.username});
+      res.render('add_event.jade', {name: req.user.name});
   });
 
   // logout route
