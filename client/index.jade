@@ -32,7 +32,7 @@ html
                   <th>Host</th>
                   <th>Address</th>
                 </tr>
-                <tr ng-repeat="event in events | filter: query | orderBy: ['name', 'address'] " ng-click="showDetails(event._id)">
+                <tr ng-repeat="event in events | filter: query | orderBy: ['time'] " ng-click="showDetails(event._id)">
                   <td>{{event.name}}</td>
                   <td>{{event.host}}</td>
                   <td>{{event.address}}</td>
