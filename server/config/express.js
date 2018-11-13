@@ -18,7 +18,7 @@ module.exports.init = function() {
   app.use(morgan('dev'));
 
   //body parsing middleware 
-  app.use(bodyParser.json());
+  app.use(bodyParser());
 
   // middleware to redirect trailing slashes
   app.use((req, res, next) => {
