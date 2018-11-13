@@ -11,7 +11,8 @@ angular.module('events').controller('EventsController', ['$scope', 'Events',
 
     $scope.detailedInfo = undefined;
 
-    $scope.addEvent = function() {
+    $scope.addEvent = function(user) {
+      console.log(user);
       $scope.event = {
         "name": $scope.newEvent.name,
         "address": $scope.newEvent.address,
@@ -21,7 +22,8 @@ angular.module('events').controller('EventsController', ['$scope', 'Events',
         "host": $scope.newEvent.host,
         "dietary_prefs": $scope.newEvent.dietary_prefs,
         "created_at": $scope.newEvent.created_at,
-        "updated_at": $scope.newEvent.updated_at
+        "updated_at": $scope.newEvent.updated_at,
+        "created_by": user
       }
       var res = Events.create($scope.event);
       $scope.updateEvents();
