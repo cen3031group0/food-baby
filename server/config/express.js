@@ -38,8 +38,5 @@ module.exports.init = function() {
   app.use('/api/events', eventsRouter);
   app.use('/api/users', usersRouter);
 
-  // Go to homepage for all routes not specified
-  app.use('*', express.static('client'))
-
   return app;
 };  
