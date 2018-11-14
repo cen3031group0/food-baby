@@ -103,6 +103,14 @@ module.exports.init = function() {
     }
   });
 
+  app.get('/profile', function (req, res) {
+    if (req.user) {
+      res.render('profile.jade', { name: req.user.name })
+    } else {
+      res.render('profile.jade')
+    }
+  });
+
   app.get('/register', function (req, res) {
     if (req.user) {
       res.redirect('/');
