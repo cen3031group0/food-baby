@@ -4,7 +4,7 @@ nav.navbar.navbar-inverse
       a.navbar-brand(href="/") FooDaddy
     ul.nav.navbar-nav.navbar-right
       if name
-        p.navbar-text Hello, #[a(href="/profile") #{name}]!
+        li #[a(href="/profile") #[span.glyphicon.glyphicon-user] #{name}]
         li #[a(href="/add_event") #[span.glyphicon.glyphicon-plus] Add Event]
         li #[a(href="/logout") #[span.glyphicon.glyphicon-log-out] Logout]
       else
