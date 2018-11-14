@@ -30,6 +30,92 @@
             "host": "American Society of Mechanical Engineers",
             "dietary prefs": "N/A",
             "created_at": "2018/10/14 00:00:00"
+        },
+        { 
+            "name" : "Pizza with the President", 
+            "created_by" : "admin",
+            "address" : "686 Museum Rd, Gainesville, FL 32611", 
+            "building" : "Reitz Union", 
+            "room" : "Grand Ballroom", 
+            "time": "2018/11/30 19:00:00",
+            "host" : "UFSG",  
+            "created_at" : "2018/11/14 00:00:00"
+        },
+        { 
+            "name" : "Pizza Party", 
+            "address" : "1475 Union Rd, Gainesville, FL 32611", 
+            "building" : "Carleton Auditorium", 
+            "room" : "CAR100",
+            "time": "2018/11/31 18:00:00", 
+            "host" : "Pedro", 
+            "created_by" : "admin", 
+            "created_at" : "2018/11/13 00:00:00"
+        },
+        { 
+            "name" : "Krishna Lunch", 
+            "address" : "Plaza of the Americas, Gainesville, FL 32603", 
+            "building" : "Plaza of the Americas", 
+            "room" : "Outside", 
+            "time": "2018/11/21 18:00:00", 
+            "host" : "Hare Krishnas", 
+            "created_by" : "admin",
+            "created_at" : "2018/11/13 00:00:00"
+        },
+        {   
+            "name" : "Friendsgiving Feast", 
+            "address" : "505 SW 2nd Ave, Gainesville, FL 32601", 
+            "building" : "123", 
+            "room" : "123", 
+            "time": "2018/11/24 13:00:00",
+            "host" : "Ross", 
+            "created_by" : "admin", 
+            "created_at" : "2018/11/13 00:00:00"
+        },
+        { 
+            "name" : "Taco Time", 
+            "address" : "1404 W University Ave, Gainesville, FL 32603", 
+            "building" : "Taco Bell", 
+            "room" : "001", 
+            "time": "2018/12/22 12:00:00",
+            "host" : "Alain", 
+            "created_by" : "admin",
+            "created_at" : "2018/11/13 00:00:00"
+        },
+        { 
+            "name" : "Poultry Potluck", 
+            "address" : "157 Gale Lemerand Dr, Gainesville, FL 32611", 
+            "building" : "Ben Hill Griffin Stadium", 
+            "time": "2018/12/11 12:00:00",
+            "host" : "Aamir", 
+            "created_by" : "admin", 
+            "created_at" : "2018/11/13 00:00:00"
+        },
+        {
+            "name" : "Bats & Chill", 
+            "address" : "Museum Rd, Gainesville, FL 32611", 
+            "building" : "UF Bat Houses", 
+            "time": "2018/12/11 2:00:00",
+            "host" : "UF Bat Fanatics", 
+            "created_by" : "admin", 
+            "created_at" : "2018/11/13 00:00:00"
+        },
+        { 
+            "name" : "Data Science Wednesday", 
+            "address" : "432 Newell Dr, Gainesville, FL 32603", 
+            "building" : "UF Informatics Institute", 
+            "room" : "002", 
+            "time": "2018/12/11 12:00:00",
+            "host" : "UF DSI", 
+            "created_by" : "admin", 
+            "created_at" : "2018/11/13 00:00:00"
+        },
+        { 
+            "name" : "Tailgate", 
+            "address" : "UF Plaza of the Americas", 
+            "time": "2018/11/31 18:00:00", 
+            "host" : "IEEE", 
+            "created_by" : "arahim306", 
+            "created_at" : "2018/11/13 00:00:00"
         }
     ]
 }
