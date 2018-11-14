@@ -28,11 +28,13 @@ html
             <div class="tableWrapper">
               <table class="table table-striped table-hover" id="eventTable">
                 <tr>
+                  <th>Date</th>
                   <th>Event</th>
                   <th>Host</th>
                   <th>Address</th>
                 </tr>
                 <tr ng-repeat="event in events | filter: query | orderBy: ['time'] " ng-click="showDetails(event._id)">
+                  <td>{{event.time | date:"MMM d, y"}}</td>
                   <td>{{event.name}}</td>
                   <td>{{event.host}}</td>
                   <td>{{event.address}}</td>
@@ -46,13 +48,15 @@ html
             <div class="modal-header">
               <span style="color:white;" class="close">&times;</span>
               <h2 style="color:white;" ><center>{{detailedInfo.name}}</center></h2>
+              <h4 style="color:white;" ><center>by {{detailedInfo.host}}</center></h4>
             </div>
             <div class="modal-body">
+              <p>Date/Time: {{detailedInfo.time | date:"MM/dd/yyyy 'at' h:mma"}}</p>
               <p>Address: {{detailedInfo.address}}</p>
-              <p>Building: {{detailedInfo.building}}</p>
-              <p>Room: {{detailedInfo.room}}</p>
+              <p ng-hide="detailedInfo.building == null">Building: {{detailedInfo.building}}</p>
+              <p ng-hide="detailedInfo.room == null">Room: {{detailedInfo.room}}</p>
               <p>Host: {{detailedInfo.host}}</p>
-              <p>Dietary Preferences: {{detailedInfo.diet}}</p>
+              <p ng-hide="detailedInfo.diet == null">Dietary Preferences: {{detailedInfo.diet}}</p>
             </div>
         	</div>
         </div>
