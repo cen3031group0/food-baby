@@ -19,33 +19,34 @@ html
           <div ng-controller="EventsController">
             <form action="/">
               <div class="form-group input-group">
-                <b>Event Name:</b>
+                <label class="control-label required">Event Name</label>
                 <input class="form-control" type="text" ng-model="newEvent.name" required/>
               </div>
               <div class='form-group input-group'>
-                <b>Time:</b>
+                <label class="control-label required">Date/Time</label>
                 <input type='datetime-local' class="form-control" ng-model="newEvent.time" required/>
               </div>
               <div class="form-group input-group">
-                <b>Address:</b>
+                <label class="control-label required">Address</label>
                 <input class="form-control" type="text" ng-model="newEvent.address" required/>
               </div>
               <div class="form-group input-group">
-                <b>Building:</b>
+                <label class="control-label">Building</label>
                 <input class="form-control" type="text" ng-model="newEvent.building" />
               </div>
               <div class="form-group input-group">
-                <b>Room:</b>
+                <label class="control-label">Room</label>
                 <input class="form-control" type="text" ng-model="newEvent.room" />
               </div>
               <div class="form-group input-group">
-                <b>Host:</b>
+                <label class="control-label">Host</label>
                 <input class="form-control" type="text" ng-model="newEvent.host" />
               </div>
               <div class="form-group input-group">
-                <b>Dietary Preferences:</b>
+                <label class="control-label">Dietary Preferences</label>
                 <input class="form-control" type="text" ng-model="newEvent.dietary_prefs" />
               </div>
+              <p>* required</p>
                 <button class="btn btn-primary" ng-click="addEvent('#{name}')">Add Event</button>
             </form>
           </div>

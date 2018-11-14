@@ -52,6 +52,13 @@ div.well{
   padding: 40px;
 }
 
+.control-label.required:after { 
+  color: #d00;
+  content: "*";
+  position: absolute;
+  margin-left: 5px;
+}
+
 /***** MODAL *****/
 
 .modal {
