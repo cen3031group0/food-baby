@@ -6,14 +6,14 @@ var should = require('should'),
 var event, id;
 
 event =  {
-  name: "",
-  created_by: "",
-  address: "",
-  building: "",
-  room: "",
+  name: "poultry partay",
+  created_by: "ross",
+  address: "901 w trade st, charlotte, nc",
+  building: "gateway center",
+  room: "1337",
   time: Date(18,11,21,0,0,0),
-  host: "",
-  dietary_prefs: "",
+  host: "rossy",
+  dietary_prefs: "vegatarian",
   created_at: Date(18,11,21,0,0,0),
   updated_at: Date(18,11,21,0,0,0)
 }
@@ -35,7 +35,7 @@ describe('Events Schema Unit Tests', function() {
     it('saves properly when name and created_by provided', function(done){
       new Event({
         name: event.name, 
-        code: event.code
+        created_by: event.created_by
       }).save(function(err, event){
         should.not.exist(err);
         id = event._id;
