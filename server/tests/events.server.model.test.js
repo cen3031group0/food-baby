@@ -11,11 +11,11 @@ event =  {
   address: "",
   building: "",
   room: "",
-  time: ISODate("2018-11-14T02:07:16.554Z"),
+  time: Date(18,11,21,0,0,0),
   host: "",
   dietary_prefs: "",
-  created_at: ISODate("2018-11-14T02:07:16.554Z"),
-  updated_at: ISODate("2018-11-14T02:07:16.554Z")
+  created_at: Date(18,11,21,0,0,0),
+  updated_at: Date(18,11,21,0,0,0)
 }
 
 describe('Events Schema Unit Tests', function() {
