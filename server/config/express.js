@@ -107,7 +107,7 @@ module.exports.init = function() {
     if (req.user) {
       res.render('profile.jade', { name: req.user.name })
     } else {
-      res.render('profile.jade')
+      res.redirect('/login')
     }
   });
 
