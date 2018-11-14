@@ -35,6 +35,7 @@
   		    	generatePin(geocoder, map, events[i]);
   		    }
 		    });
+        map.setCenter({lat: 29.6463, lng: 82.3478});
       }
       function generatePin(geocoder, map, event) {
         geocoder.geocode({'address': event.address}, function(results, status) {
@@ -45,12 +46,16 @@
               position: results[0].geometry.location
             });
 
-            var infoWindow = new google.maps.InfoWindow;
             marker.addListener('click', function() {
-	        	infoWindow.setPosition(marker.getPosition());
-	        	infoWindow.setContent(event.name + "<br>" + event.address);
-	        	infoWindow.open(map, marker);
-	        });
+              if (infoWindow) {
+                infoWindow.close();
+              }
+              infoWindow = new google.maps.InfoWindow;
+  	        	infoWindow.setPosition(marker.getPosition());
+  	        	infoWindow.setContent(event.name + "<br>" + event.address);
+  	        	infoWindow.open(map, marker);
+              map.setCenter(marker.getPosition());
+	         });
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
