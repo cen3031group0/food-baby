@@ -2,6 +2,8 @@
 angular.module('events', []);
 angular.module('users', []);
 
+//angular.bootstrap(document.getElementById("App2"), ['appUsers']);
+
 /* register the application and inject all the necessary dependencies */
 var app_events = angular.module('appEvents', ['events']);
 var app_users = angular.module('appUsers', ['users']);
