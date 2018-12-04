@@ -37,6 +37,6 @@ body
                     h2(class="text-center") Your Profile
                     .tableWrapper             
                         table.table.table-striped.table-hover                
-                            button.btn.btn-danger(ng-click="deleteAllEvents('#{name}')") Delete Your Account
+                            button.btn.btn-danger(ng-click="deleteUser('#{name}')") Delete Your Account
     script.
         angular.bootstrap(document.getElementById("app-Users"), ['appUsers']);

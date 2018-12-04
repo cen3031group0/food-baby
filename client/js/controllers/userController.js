@@ -17,19 +17,34 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
       var res = Users.create($scope.user);
     };
 
-    $scope.deleteUser = function(id) {
-      Users.delete(id);
-    };
-
-    $scope.deleteAllEvents = function(name) {
+    $scope.deleteUser = function(name) {
+      // First, delete all events associated with the user
       $.getJSON(window.location.origin + "/api/events", function(data){
         for (var i = 0; i < data.length; i++) {
           var obj = data[i];
           if(name == obj.created_by){
-            delete(window.location.origin + '/api/events/' + obj._id);
+            $.ajax({
+              url: '/api/events/' + obj._id,
+              type:'DELETE',
+              success: console.log("Deleted " + obj.name)
+            });
           }
         }
       })
+
+      // Then, redirect to logout page to logout
+      window.location = window.location.origin + "/logout";
+
+      // Finally, actually delete the user
+      $.getJSON(window.location.origin + "/api/users", function(data){
+        for (var i = 0; i < data.length; i++) {
+          var obj = data[i];
+          if(name == obj.name){
+            Users.delete(obj._id);
+          }
+        }
+     });
     };
+
   }
 ]);
