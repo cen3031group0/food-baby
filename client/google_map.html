@@ -28,15 +28,20 @@
           center: {lat: 29.6463, lng: 82.3478},
           zoom: 15
         });
-
         geocoder = new google.maps.Geocoder();
         $.getJSON(window.location.origin + "/api/events", function(events) {
+          var j = 0;
   		    for (var i in events ){
-  		    	generatePin(geocoder, map, events[i]);
+            if( j < 10 ){
+  		    	 j = j + 1;
+             generatePin(geocoder, map, events[i]);
+            }
   		    }
 		    });
-        map.setCenter({lat: 29.6463, lng: 82.3478});
       }
+      $(window).on( "load", function() {
+        map.setCenter({lat: 29.6463, lng: 82.3478});
+      });
       function generatePin(geocoder, map, event) {
         geocoder.geocode({'address': event.address}, function(results, status) {
           if (status === 'OK') {
@@ -52,10 +57,11 @@
               }
               infoWindow = new google.maps.InfoWindow;
   	        	infoWindow.setPosition(marker.getPosition());
-  	        	infoWindow.setContent(event.name + "<br>" + event.address);
+  	        	infoWindow.setContent(  event.name + "<br>" + event.address );
   	        	infoWindow.open(map, marker);
               map.setCenter(marker.getPosition());
 	         });
+
           } else {
             alert('Geocode was not successful for the following reason: ' + status);
           }
@@ -65,5 +71,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVAOsJGxJX6QlWoLL6XyVMx0k8B4JPCq4&callback=initMap"
     async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/modal.js"></script>
   </body>
 </html>
