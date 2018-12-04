@@ -36,10 +36,7 @@ body
                 .col-md-12
                     h2(class="text-center") Your Profile
                     .tableWrapper             
-                        table.table.table-striped.table-hover
-                            tr
-                                th User                    
-                            tr(ng-repeat="user in users")
-                                td {{user.name}}
+                        table.table.table-striped.table-hover                
+                            button.btn.btn-danger(ng-click="deleteAllEvents('#{name}')") Delete Your Account
     script.
         angular.bootstrap(document.getElementById("app-Users"), ['appUsers']);
