@@ -55,3 +55,15 @@ exports.userByID = function(req, res, next, id) {
     }
   });
 };
+
+exports.userByName = function(req, res, next, Name) {
+  User.findOne({name: Name}).exec(function(err, db_user) {
+    if(err) {
+      res.status(400).send(err);
+    } else {
+      req.db_user = db_user;
+      next();
+    }
+  });
+};
+

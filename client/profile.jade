@@ -6,6 +6,9 @@ head.
     <script src="js/app.js"></script>
     <script src="js/factories/eventFactory.js"></script>
     <script src="js/controllers/eventController.js"></script>
+    <script src="js/factories/userFactory.js"></script>
+    <script src="js/controllers/userController.js"></script>
+    <script src="angular.js"></script>
 body
     div#nav
       include nav_bar.jade
@@ -27,3 +30,13 @@ body
                                 td {{event.address}}                                
                                 td(ng-click='deleteEvent(event._id)')
                                     span.glyphicon.glyphicon-remove(style='color: red;')
+    div#app-Users
+        .container(ng-controller='UsersController')
+            .row
+                .col-md-12
+                    h2(class="text-center") Your Profile
+                    .tableWrapper             
+                        table.table.table-striped.table-hover                
+                            button.btn.btn-danger(ng-click="deleteUser('#{name}')") Delete Your Account
+    script.
+        angular.bootstrap(document.getElementById("app-Users"), ['appUsers']);
