@@ -19,21 +19,24 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
 
     $scope.deleteUser = function(name) {
       // First, delete all events associated with the user
-      $.getJSON(window.location.origin + "/api/events", function(data){
+      var promises = [];
+      $.getJSON(window.location.origin + "/api/events").then(function(data){
         for (var i = 0; i < data.length; i++) {
           var obj = data[i];
           if(name == obj.created_by){
-            $.ajax({
+            var request = $.ajax({
               url: '/api/events/' + obj._id,
               type:'DELETE',
               success: console.log("Deleted " + obj.name)
             });
+            promises.push(request);
           }
         }
-      })
-
-      // Then, redirect to logout page to logout
-      window.location = window.location.origin + "/logout";
+        // Then, redirect to logout page to logout
+        $.when.apply(null, promises).done(function(){
+           window.location = window.location.origin + "/logout";
+        })
+      });
 
       // Finally, actually delete the user
       for (var i = 0; i < $scope.users.length; i++) {
