@@ -36,15 +36,12 @@ angular.module('users').controller('UsersController', ['$scope', 'Users',
       window.location = window.location.origin + "/logout";
 
       // Finally, actually delete the user
-      $.getJSON(window.location.origin + "/api/users", function(data){
-        for (var i = 0; i < data.length; i++) {
-          var obj = data[i];
-          if(name == obj.name){
-            Users.delete(obj._id);
-          }
+      for (var i = 0; i < $scope.users.length; i++) {
+        var obj = $scope.users[i];
+        if(name == obj.name){
+          Users.delete(obj._id);
         }
-     });
+      }
     };
-
   }
 ]);
